@@ -21,7 +21,21 @@ RUN /bin/bash -c 'python -m ipykernel install --user --name py3 --display-name "
 RUN mkdir -p -m 700 /root/.jupyter/ && \
     echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py
 
-RUN mkdir /root/notebooks
+RUN mkdir -p /root/notebooks/course
+WORKDIR /root/notebooks/course
+RUN git clone https://github.com/cs109/2015lab1
+RUN git clone https://github.com/cs109/2015lab2
+RUN git clone https://github.com/cs109/2015lab3
+RUN git clone https://github.com/cs109/2015lab4
+RUN git clone https://github.com/cs109/2015lab5
+RUN git clone https://github.com/cs109/2015lab6
+RUN git clone https://github.com/cs109/2015lab7
+RUN git clone https://github.com/cs109/2015lab8
+RUN git clone https://github.com/cs109/2015lab9
+RUN git clone https://github.com/cs109/2015lab10
+RUN git clone https://github.com/cs109/2015lab11
+RUN git clone https://github.com/cs109/cs109_data
+
 CMD jupyter notebook -y --no-browser --notebook-dir="/root/notebooks" --port=8888
 
 EXPOSE 8888
