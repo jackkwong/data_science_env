@@ -17,10 +17,6 @@ RUN conda create -y -n py3 -c https://conda.anaconda.org/meloncholy python=3 ana
 RUN /bin/bash -c 'source activate py3'
 RUN /bin/bash -c 'python -m ipykernel install --user --name py3 --display-name "Python 3 (env py3)"'
 
-# Add a notebook profile.
-RUN mkdir -p -m 700 /root/.jupyter/ && \
-    echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py
-
 RUN mkdir -p /root/notebooks/course
 WORKDIR /root/notebooks/course
 RUN git clone https://github.com/cs109/2015lab1
@@ -35,6 +31,9 @@ RUN git clone https://github.com/cs109/2015lab9
 RUN git clone https://github.com/cs109/2015lab10
 RUN git clone https://github.com/cs109/2015lab11
 RUN git clone https://github.com/cs109/cs109_data
+
+# Add a notebook profile.
+ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 CMD jupyter notebook -y --no-browser --notebook-dir="/root/notebooks" --port=8888
 
