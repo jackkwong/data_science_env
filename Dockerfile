@@ -10,12 +10,10 @@ ENV PATH /root/anaconda2/bin:$PATH
 ADD .bash_profile ~/.bash_profile
 
 RUN conda create -y -n py2 -c https://conda.anaconda.org/cs109 python=2 anaconda notebook ipykernel seaborn pyquery beautifulsoup4
-RUN /bin/bash -c 'source activate py2'
-RUN /bin/bash -c 'python -m ipykernel install --user --name py2 --display-name "Python 2 (env py2)"'
+RUN /bin/bash -c 'source activate py2 && python -m ipykernel install --user --name py2 --display-name "Python 2 (env py2)"'
 
 RUN conda create -y -n py3 -c https://conda.anaconda.org/meloncholy python=3 anaconda notebook ipykernel seaborn pyquery beautifulsoup4
-RUN /bin/bash -c 'source activate py3'
-RUN /bin/bash -c 'python -m ipykernel install --user --name py3 --display-name "Python 3 (env py3)"'
+RUN /bin/bash -c 'source activate py3 && python -m ipykernel install --user --name py3 --display-name "Python 3 (env py3)"'
 
 RUN mkdir -p /root/notebooks/course
 WORKDIR /root/notebooks/course
@@ -35,6 +33,6 @@ RUN git clone https://github.com/cs109/cs109_data
 # Add a notebook profile.
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
-CMD jupyter notebook -y --no-browser --notebook-dir="/root/notebooks" --port=8888
+CMD /bin/bash -c "jupyter notebook -y --no-browser --notebook-dir='/root/notebooks' --port=8888"
 
 EXPOSE 8888
