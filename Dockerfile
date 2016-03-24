@@ -10,11 +10,11 @@ RUN rm Anaconda2-2.5.0-Linux-x86_64.sh
 ENV PATH /root/anaconda2/bin:$PATH
 ADD .bash_profile ~/.bash_profile
 
-RUN conda create -y -n py2 -c https://conda.anaconda.org/cs109 python=2 anaconda notebook ipykernel seaborn pyquery beautifulsoup4
-RUN /bin/bash -c 'source activate py2 && python -m ipykernel install --user --name py2 --display-name "Python 2 (env py2)"'
+RUN conda create -y -n py2 -c https://conda.anaconda.org/cs109 python=2 anaconda notebook ipykernel seaborn pyquery beautifulsoup4 numexpr
+RUN /bin/bash -c 'source activate py2 && python -m ipykernel install --user --name py2 --display-name "Python 2 (with libraries for CS109)"'
 
-RUN conda create -y -n py3 -c https://conda.anaconda.org/meloncholy python=3 anaconda notebook ipykernel seaborn pyquery beautifulsoup4
-RUN /bin/bash -c 'source activate py3 && python -m ipykernel install --user --name py3 --display-name "Python 3 (env py3)"'
+RUN conda create -y -n py3 -c https://conda.anaconda.org/meloncholy python=3 anaconda notebook ipykernel seaborn pyquery beautifulsoup4 numexpr
+RUN /bin/bash -c 'source activate py3 && python -m ipykernel install --user --name py3 --display-name "Python 3 (with libraries for CS109)"'
 
 RUN mkdir -p /root/notebooks/course
 WORKDIR /root/notebooks/course
