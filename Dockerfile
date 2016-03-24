@@ -6,6 +6,7 @@ RUN apt-get install -y curl git vim build-essential pkg-config libsm6 libxrender
 RUN curl http://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh -o Anaconda2-2.5.0-Linux-x86_64.sh
 RUN chmod +x Anaconda2-2.5.0-Linux-x86_64.sh
 RUN printf "\nyes\n" | ./Anaconda2-2.5.0-Linux-x86_64.sh
+RUN rm Anaconda2-2.5.0-Linux-x86_64.sh
 ENV PATH /root/anaconda2/bin:$PATH
 ADD .bash_profile ~/.bash_profile
 
