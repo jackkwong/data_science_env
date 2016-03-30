@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Jack Kwong
 
 RUN apt-get update
-RUN apt-get install -y curl git vim build-essential pkg-config libsm6 libxrender1 libfontconfig1
+RUN apt-get install -y curl git vim build-essential pkg-config libsm6 libxrender1 libfontconfig1 silversearcher-ag
 RUN curl http://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh -o Anaconda2-2.5.0-Linux-x86_64.sh
 RUN chmod +x Anaconda2-2.5.0-Linux-x86_64.sh
 RUN printf "\nyes\n" | ./Anaconda2-2.5.0-Linux-x86_64.sh
