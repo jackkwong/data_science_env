@@ -30,6 +30,7 @@ RUN git clone https://github.com/cs109/2015lab9
 RUN git clone https://github.com/cs109/2015lab10
 RUN git clone https://github.com/cs109/2015lab11
 RUN git clone https://github.com/cs109/cs109_data
+RUN git clone https://github.com/cs109/2015.git
 
 # Add a notebook profile.
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
