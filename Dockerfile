@@ -1,5 +1,5 @@
 FROM python:2.7-slim
-AINTAINER Jack Kwong
+MAINTAINER Jack Kwong
 
 RUN apt-get update && \
     apt-get install -y --fix-missing curl git vim build-essential python-dev pkg-config libfreetype6-dev libpng-dev libblas-dev liblapack-dev gfortran libxml2-dev libxslt1-dev libjpeg62-turbo-dev r-base && \
